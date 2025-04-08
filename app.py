@@ -74,33 +74,36 @@ st.markdown("""
 
     /* Logo Container */
     .logo-container {
-        display: block; /* Remove flex to allow manual positioning */
+        display: block;
         margin-bottom: 30px;
         width: 100%;
         max-width: 1200px;
     }
 
-    /* Custom class for logo positioning */
+    /* Logo Image Style */
     .logo-image {
-        width: 200px; /* You can change this */
-        height: auto; /* Maintain aspect ratio */
+        width: 200px;
+        height: auto;
         transition: transform 0.3s ease;
-    }
-    .logo-image:hover {
-        transform: translateY(-5px);
+        border-radius: 50%; /* لو اللوجو دائري */
     }
 
-    /* Class to move logo to the right */
+    .logo-image:hover {
+        transform: translateY(-5px) scale(1.03);
+    }
+
+    /* Align Right */
     .logo-right {
         float: right;
-        margin-right: 1px; /* Adjust this to control how far from the right edge */
+        margin-right: 20px;
     }
 
-    /* Class to move logo to the left */
+    /* Align Left */
     .logo-left {
         float: left;
-        margin-left: 20px; /* Adjust this to control how far from the left edge */
+        margin-left: 20px;
     }
+
 
     /* Clearfix to prevent layout issues with float */
     .clearfix::after {
