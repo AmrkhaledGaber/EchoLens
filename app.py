@@ -72,37 +72,33 @@ st.markdown("""
         100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Logo Container */
-    .logo-container {
-        display: block;
-        margin-bottom: 30px;
-        width: 100%;
-        max-width: 1200px;
-    }
+/* Logo Container */
+.logo-container {
+    display: flex;
+    justify-content: center;  /* توسيط أفقي */
+    align-items: center;      /* توسيط عمودي (لو حبيت) */
+    margin-bottom: 30px;
+    width: 100%;
+}
 
-    /* Logo Image Style */
-    .logo-image {
-        width: 200px;
-        height: auto;
-        transition: transform 0.3s ease;
-        border-radius: 50%; /* لو اللوجو دائري */
-    }
+/* Logo Image Style */
+.logo-image {
+    width: 200px;
+    height: auto;
+    transition: transform 0.3s ease;
+    border-radius: 50%; /* لو اللوجو دائري */
+}
 
-    .logo-image:hover {
-        transform: translateY(-5px) scale(1.03);
-    }
+/* Hover Effect */
+.logo-image:hover {
+    transform: translateY(-5px) scale(1.03);
+}
 
-    /* Align Right */
-    .logo-right {
-        float: right;
-        margin-right: 20px;
-    }
-
-    /* Align Left */
-    .logo-left {
-        float: left;
-        margin-left: 20px;
-    }
+/* إزالة الأنماط القديمة (يمين / شمال) */
+.logo-right, .logo-left {
+    float: none;
+    margin: 0 auto;
+}
 
 
     /* Clearfix to prevent layout issues with float */
