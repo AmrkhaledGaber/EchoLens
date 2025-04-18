@@ -748,53 +748,30 @@ elif page == "About Us":
 
     col1, col2, col3, col4, col5 = st.columns(5)
     
-    with col1:
-        st.markdown("""
-        <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.png" alt="Mohamed ElSmawy">
-            <h4>Mohamed ElSmawy</h4>
-            <p><b>AIS</b></p>
-        </div>
+    def render_team_card(image_url, name, role):
+        st.markdown(f"""
+            <div class="developer-card" style="padding: 15px; border: 1px solid #FF4B4B; border-radius: 15px; text-align: center; background-color: #1E1E1E; height: 300px; display: flex; flex-direction: column; justify-content: space-between;">
+                <img src="{image_url}" alt="{name}" style="border-radius: 50%; width: 100px; height: 100px; object-fit: cover; margin-bottom: 10px;">
+                <div style="color: white; font-weight: bold; font-size: 16px;">{name}</div>
+                <div style="color: #ccc; font-size: 14px;">{role}</div>
+            </div>
         """, unsafe_allow_html=True)
+    
+    with col1:
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.jpg", "Mohamed ElSmawy", "AIS")
     
     with col2:
-        st.markdown("""
-        <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.png" alt="George Nashaat">
-            <h4>George Nashaat</h4>
-            <p><b>AIS</b></p>
-        </div>
-        """, unsafe_allow_html=True)
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.jpg", "George Nashaat", "AIS")
     
     with col3:
-        st.markdown("""
-        <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.png" alt="Aya Tamer">
-            <h4>Aya Tamer</h4>
-            <p><b>AIS</b></p>
-        </div>
-        """, unsafe_allow_html=True)
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.jpg", "Aya Tamer (Leader)", "AIS")
     
     with col4:
-        st.markdown("""
-        <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.png" alt="Ahmed Dawood">
-            <h4>Ahmed Dawood</h4>
-            <p><b>AIS</b></p>
-        </div>
-        """, unsafe_allow_html=True)
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.jpg", "Ahmed Dawood", "AIS")
     
     with col5:
-        st.markdown("""
-        <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.png" alt="Amr Khaled">
-            <h4>Amr Khaled</h4>
-            <p><b>AIS</b></p>
-        </div>
-        """, unsafe_allow_html=True)
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.jpg", "Amr Khaled", "AIS")
     
-    # Close container
-    st.markdown('</div>', unsafe_allow_html=True)
 
 
 # Contact Us Page
