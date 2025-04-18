@@ -379,7 +379,7 @@ if page == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-     st.markdown("""
+    st.markdown("""
         <div style="width: 100%; max-width: 600px; margin: 0 auto; padding: 40px 10px; text-align: center;">
             <!-- Logo centered -->
             <img src="https://github.com/AmrkhaledGaber/EchoLens/blob/main/logo_transparent.png" alt="Logo" width="100" style="border-radius: 50%; margin-bottom: 15px;">
