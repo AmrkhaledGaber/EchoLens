@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 
 # === CONFIG ===
 st.set_page_config(page_title="Echolens - Video Story Generator", layout="centered")
@@ -40,11 +39,11 @@ a:hover { text-decoration: underline; }
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    padding: 2em 1em;
+    gap: 2em;
+    margin-top: 40px;
 }
 .team-card {
     background: #2b2b2b;
@@ -53,14 +52,19 @@ a:hover { text-decoration: underline; }
     padding: 1em;
     text-align: center;
     color: white;
+    width: 180px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 75, 75, 0.4);
 }
 .team-card img {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 0.8em;
-    box-shadow: 0 0 10px rgba(255, 75, 75, 0.4);
+}
+.team-card:hover {
+    transform: scale(1.05);
 }
 .footer {
     margin-top: 3em;
@@ -76,24 +80,9 @@ a:hover { text-decoration: underline; }
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "About Us", "Contact Us"])
 
-# === HOME ===
-if page == "Home":
-    st.markdown('<div class="logo-container"><img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_Ech.png" alt="Logo"></div>', unsafe_allow_html=True)
-    st.markdown("""<h1>Echolens</h1><h3>Turning Videos into Stories with AI</h3>""", unsafe_allow_html=True)
-    st.markdown("""
-    <div class='section'>
-        <h2>Upload Your Video</h2>
-        <p style='text-align:center;'>Supported formats: MP4, AVI | Max size: 200MB</p>
-    """, unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("Upload Video", type=["mp4", "avi"])
-    if uploaded_file:
-        st.success("File uploaded successfully!")
-        st.video(uploaded_file)
-    st.markdown("</div>", unsafe_allow_html=True)
-
 # === ABOUT US ===
-elif page == "About Us":
-    st.markdown("<div class='section' style='padding: 40px 0; background-color: #121212;'>", unsafe_allow_html=True)
+if page == "About Us":
+    st.markdown("<div class='section'>", unsafe_allow_html=True)
 
     # Title and Description
     st.markdown("""
@@ -106,10 +95,7 @@ elif page == "About Us":
     # Team Heading
     st.markdown("<h2 style='text-align:center; font-size: 30px; color: #FF4B4B; margin-top: 50px;'>Our Team</h2>", unsafe_allow_html=True)
 
-    # Team Grid Section (Updated for horizontal layout)
-    st.markdown("<div class='team-grid' style='display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;'>", unsafe_allow_html=True)
-
-    # List of Team Members
+    # Team Grid Section (Horizontal layout)
     team_members = [
         {"name": "Aya Tamer", "role": "AIS", "img": "aya_tamer.png"},
         {"name": "Mohamed ElSmawy", "role": "AIS", "img": "mohamed_elsmawy.png"},
@@ -120,36 +106,14 @@ elif page == "About Us":
     
     for member in team_members:
         st.markdown(f"""
-        <div class='team-card' style='background: linear-gradient(135deg, #2A2A2A, #121212); padding: 20px; text-align: center; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); width: 200px;'>
-            <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/{member['img']}' alt='{member['name']}' style='border-radius: 50%; width: 150px; height: 150px; object-fit: cover; margin-bottom: 15px;'>
+        <div class='team-card'>
+            <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/{member['img']}' alt='{member['name']}'>
             <h3 style='color: #FF4B4B;'>{member['name']}</h3>
             <p style='color: #ccc;'>{member['role']}</p>
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("</div></div>", unsafe_allow_html=True)  # Closing the team grid section
-
-# === CONTACT US ===
-elif page == "Contact Us":
-    st.markdown("<div class='section'>", unsafe_allow_html=True)
-    st.markdown("""<h1>Contact Us</h1>
-    <p style='text-align: center;'>Questions or feedback? Reach out to us anytime.</p>
-    <div style='text-align:center; font-size:18px;'>
-        📧 <strong>Email:</strong> <a href='mailto:echolens9@gmail.com'>echolens9@gmail.com</a><br>
-        🌐 <strong>GitHub:</strong> <a href='https://github.com/AmrkhaledGaber/EchoLens'>Echolens Project</a><br>
-        🔗 <strong>LinkedIn:</strong> <a href='https://linkedin.com/company/echolens'>Echolens Team</a>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("<h2 style='text-align:center;'>Send Us a Message</h2>", unsafe_allow_html=True)
-    with st.form(key="contact_form"):
-        name = st.text_input("Your Name")
-        email = st.text_input("Your Email")
-        message = st.text_area("Your Message")
-        submit = st.form_submit_button("Send")
-        if submit:
-            st.success(f"Thanks, {name}! We'll contact you soon at {email}.")
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)  # Closing the section div
 
 # === FOOTER ===
 st.markdown("""<div class='footer'>
