@@ -381,7 +381,7 @@ if page == "Home":
 # Logo and Title (Centered Block)
 
     st.markdown("""
-    <div style="width: 100%; max-width: 600px; margin: 0 auto; padding: 40px 10px; text-align: center;">
+    <div style="width: 100%; max-width: 600px; margin: 0 auto; padding:50px 10px; text-align: center;">
         <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_transparent.png"
              alt="Logo"
              width="100"
