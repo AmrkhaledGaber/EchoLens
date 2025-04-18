@@ -380,20 +380,16 @@ if page == "Home":
     """, unsafe_allow_html=True)
 
  # Logo and Title in one horizontal row (right + left)
+    # Logo and Title in one horizontal row (right + left)
     st.markdown("""
     <div style="display: flex; align-items: center; justify-content: flex-start; width: 100%; max-width: 1000px; padding: 20px 10px 40px 10px; margin: auto;">
-        
-        <!-- Logo on the right -->
         <div style="flex-shrink: 0; margin-right: 30px;">
             <img src="logo_transparent.png" alt="Logo" width="100" style="border-radius: 50%;">
         </div>
-    
-        <!-- Text block on the left -->
         <div style="flex-grow: 1;">
             <h2 style="margin: 0; color: #FF4B4B;">Echolens</h2>
             <p style="margin: 0; font-size: 16px; color: #ccc;">Turning Videos into Stories with AI</p>
         </div>
-    
     </div>
     """, unsafe_allow_html=True)
 
