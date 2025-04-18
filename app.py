@@ -384,7 +384,7 @@ if page == "Home":
     <div style="width: 100%; max-width: 600px; margin: 0 auto; padding:50px 10px; text-align: center;">
         <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_transparent.png"
              alt="Logo"
-             width="160"
+             width="180"
              style="border-radius: 50%; margin-bottom: 15px;">
         <h2 style="margin: 0; color: #FF4B4B;">Echolens</h2>
         <p style="margin-top: 5px; font-size: 25px; color: #ccc;">Turning Videos into Stories with AI</p>
