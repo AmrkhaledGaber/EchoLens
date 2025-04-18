@@ -112,8 +112,8 @@ elif page == "About Us":
     # Team Heading
     st.markdown("<h2 style='text-align:center; font-size: 30px; color: #FF4B4B; margin-top: 50px;'>Our Team</h2>", unsafe_allow_html=True)
 
-    # Team Grid Section
-    st.markdown("<div class='team-grid' style='display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px;'>", unsafe_allow_html=True)
+    # Team Grid Section (Updated for horizontal layout)
+    st.markdown("<div class='team-grid' style='display: flex; justify-content: center; gap: 20px; margin-top: 40px;'>", unsafe_allow_html=True)
 
     # List of Team Members
     team_members = [
@@ -134,7 +134,6 @@ elif page == "About Us":
         """, unsafe_allow_html=True)
 
     st.markdown("</div></div>", unsafe_allow_html=True)  # Closing the team grid section
-
 
 # === CONTACT US ===
 elif page == "Contact Us":
