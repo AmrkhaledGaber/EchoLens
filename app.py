@@ -785,8 +785,8 @@ elif page == "Contact Us":
     """, unsafe_allow_html=True)
 
     st.subheader("Get in Touch")
-    st.write("📧 **Email**: contact@echolens.com")
-    st.write("🌐 **GitHub**: [Echolens Project](https://github.com/echolens)")
+    st.write("📧 **Email**: echolens9@gmail.com")
+    st.write("🌐 **GitHub**: [Echolens Project](https://github.com/AmrkhaledGaber/EchoLens)")
     st.write("🔗 **LinkedIn**: [Echolens Team](https://linkedin.com/company/echolens)")
 
     st.subheader("Send Us a Message")
@@ -805,7 +805,7 @@ st.markdown('<div class="content-container">', unsafe_allow_html=True)
 st.markdown("""
 <div class="footer">
     <p>© 2025 Echolens. All rights reserved.</p>
-    <p><a href="https://github.com/echolens">GitHub</a> | <a href="mailto:contact@echolens.com">Email Us</a></p>
+    <p><a href="https://github.com/echolens">GitHub</a> | <a href="mailto:echolens9@gmail.com">Email Us</a></p>
 </div>
 """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)  # Close content-container
