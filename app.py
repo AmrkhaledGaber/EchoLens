@@ -110,87 +110,112 @@ if page == "Home":
 # === About Us Page ===
 elif page == "About Us":
     st.markdown("""
-    <style>
-    .about-container {
-        text-align: center;
-        padding: 40px 20px;
-        max-width: 1000px;
-        margin: auto;
-    }
-    .about-container h1 {
-        color: #FF4B4B;
-        font-size: 36px;
-        margin-bottom: 10px;
-    }
-    .about-container p {
-        color: #ccc;
-        font-size: 18px;
-        margin-bottom: 40px;
-    }
-    .team-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 30px;
-    }
-    .team-card {
-        background: linear-gradient(145deg, #1E1E1E, #121212);
-        border: 1px solid #FF4B4B;
-        border-radius: 16px;
-        padding: 20px;
-        width: 180px;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .team-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(255,75,75,0.3);
-    }
-    .team-card img {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        border-radius: 50%;
-        margin-bottom: 15px;
-        border: 3px solid #FF4B4B;
-    }
-    .team-card h4 {
-        color: #FF4B4B;
-        margin: 5px 0;
-    }
-    .team-card p {
-        color: #aaa;
-        margin: 0;
-        font-size: 14px;
-    }
-    </style>
+        <style>
+        .about-container {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .about-title {
+            color: #FF4B4B;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .about-description {
+            color: #ccc;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .team-title {
+            color: #FF4B4B;
+            font-size: 28px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .team-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .team-card {
+            background: linear-gradient(145deg, #1E1E1E, #121212);
+            border: 1px solid #FF4B4B;
+            border-radius: 16px;
+            padding: 20px;
+            width: 180px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255,75,75,0.3);
+        }
+        .team-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 2px solid #FF4B4B;
+        }
+        .team-card h4 {
+            color: #FF4B4B;
+            margin: 10px 0 5px;
+        }
+        .team-card p {
+            color: #aaa;
+            font-size: 14px;
+            margin: 0;
+        }
+        </style>
     """, unsafe_allow_html=True)
 
-    st.markdown("<div class='about-container'>", unsafe_allow_html=True)
-    st.markdown("<h1>About Echolens</h1>", unsafe_allow_html=True)
-    st.markdown("<p>We are a passionate team of AI developers turning vision into insight through video analysis and storytelling.</p>", unsafe_allow_html=True)
+    st.markdown("""
+        <div class='about-container'>
+            <h1 class='about-title'>About Echolens</h1>
+            <p class='about-description'>
+                We are a passionate team of AI developers turning vision into insight through video analysis and storytelling.
+            </p>
 
-    st.markdown("<h2 style='color:#FF4B4B;'>Our Team</h2>", unsafe_allow_html=True)
-    st.markdown("<div class='team-container'>", unsafe_allow_html=True)
+            <h2 class='team-title'>Our Team</h2>
+            <div class='team-row'>
 
-    team_members = [
-        {"name": "Aya Tamer", "role": "AIS", "img": "aya_tamer.png"},
-        {"name": "Mohamed ElSmawy", "role": "AIS", "img": "mohamed_elsmawy.png"},
-        {"name": "George Nashaat", "role": "AIS", "img": "george_nashaat.png"},
-        {"name": "Ahmed Dawood", "role": "AIS", "img": "ahmed_dawood.png"},
-        {"name": "Amr Khaled", "role": "AIS", "img": "amr_khaled.png"},
-    ]
+                <div class='team-card'>
+                    <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.png' />
+                    <h4>Aya Tamer</h4>
+                    <p>AIS</p>
+                </div>
 
-    for member in team_members:
-        st.markdown(f"""
-        <div class='team-card'>
-            <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/{member['img']}' alt='{member['name']}'>
-            <h4>{member['name']}</h4>
-            <p>{member['role']}</p>
+                <div class='team-card'>
+                    <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.png' />
+                    <h4>Mohamed ElSmawy</h4>
+                    <p>AIS</p>
+                </div>
+
+                <div class='team-card'>
+                    <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.png' />
+                    <h4>George Nashaat</h4>
+                    <p>AIS</p>
+                </div>
+
+                <div class='team-card'>
+                    <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.png' />
+                    <h4>Ahmed Dawood</h4>
+                    <p>AIS</p>
+                </div>
+
+                <div class='team-card'>
+                    <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.png' />
+                    <h4>Amr Khaled</h4>
+                    <p>AIS</p>
+                </div>
+
+            </div>
         </div>
-        """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
-    st.markdown("</div></div>", unsafe_allow_html=True)
 # === Contact Page ===
 elif page == "Contact Us":
     st.markdown("""
