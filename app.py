@@ -745,39 +745,57 @@ elif page == "About Us":
 
     # Developer Profiles (Placeholder Data)
     st.subheader("Meet Our Team")
-    col1, col2, col3 = st.columns(3)
 
+    col1, col2, col3, col4, col5 = st.columns(5)
+    
     with col1:
         st.markdown("""
         <div class="developer-card">
-            <img src="https://via.placeholder.com/100" alt="Developer 1">
-            <h4>Ahmed Mohamed</h4>
-            <p><b>AI Model Developer</b></p>
-            <p>Ahmed is a senior computer science student specializing in machine learning.</p>
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.jpg" alt="Mohamed ElSmawy">
+            <h4>Mohamed ElSmawy</h4>
+            <p><b>AIS</b></p>
         </div>
         """, unsafe_allow_html=True)
-
+    
     with col2:
         st.markdown("""
         <div class="developer-card">
-            <img src="https://via.placeholder.com/100" alt="Developer 2">
-            <h4>Sara Ali</h4>
-            <p><b>Frontend Developer</b></p>
-            <p>Sara designed the user interface and ensured a seamless user experience.</p>
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.jpg" alt="George Nashaat">
+            <h4>George Nashaat</h4>
+            <p><b>AIS</b></p>
         </div>
         """, unsafe_allow_html=True)
-
+    
     with col3:
         st.markdown("""
         <div class="developer-card">
-            <img src="https://via.placeholder.com/100" alt="Developer 3">
-            <h4>Mohamed Khaled</h4>
-            <p><b>Backend Developer</b></p>
-            <p>Mohamed handled the integration of AI models and backend processing.</p>
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.jpg" alt="Aya Tamer">
+            <h4>Aya Tamer</h4>
+            <p><b>(Team Leader)</b><br><b>AIS</b></p>
         </div>
         """, unsafe_allow_html=True)
+    
+    with col4:
+        st.markdown("""
+        <div class="developer-card">
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.jpg" alt="Ahmed Dawood">
+            <h4>Ahmed Dawood</h4>
+            <p><b>AIS</b></p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col5:
+        st.markdown("""
+        <div class="developer-card">
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.jpg" alt="Amr Khaled">
+            <h4>Amr Khaled</h4>
+            <p><b>AIS</b></p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Close container
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    st.markdown('</div>', unsafe_allow_html=True)  # Close content-container
 
 # Contact Us Page
 elif page == "Contact Us":
