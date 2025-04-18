@@ -1,133 +1,82 @@
 import streamlit as st
 
-# Apply modern dark-glass style with custom CSS
+# New Team Section Design
+st.markdown('<div class="content-container">', unsafe_allow_html=True)
+
 st.markdown("""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
+<h1 style="text-align: center; margin-bottom: 40px;">Meet Our Team</h1>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; justify-items: center;">
 
-    .stApp {
-        background: linear-gradient(to bottom right, #0f0f0f, #1f1f1f);
-        color: #fff;
-        font-family: 'Outfit', sans-serif;
-    }
+  <div class="team-card">
+    <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.png" class="team-avatar">
+    <h3>Mohamed ElSmawy</h3>
+    <p>AIS</p>
+  </div>
 
-    h1, h2, h3 {
-        color: #FF6B6B;
-        text-align: center;
-    }
+  <div class="team-card">
+    <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.png" class="team-avatar">
+    <h3>George Nashaat</h3>
+    <p>AIS</p>
+  </div>
 
-    .glass-box {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 2rem;
-        margin-top: 2rem;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-    }
+  <div class="team-card">
+    <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.png" class="team-avatar">
+    <h3>Aya Tamer (Leader)</h3>
+    <p>AIS</p>
+  </div>
 
-    .glass-box input, .glass-box textarea {
-        background-color: rgba(255, 255, 255, 0.1) !important;
-        color: #fff !important;
-        border-radius: 10px !important;
-    }
+  <div class="team-card">
+    <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.png" class="team-avatar">
+    <h3>Ahmed Dawood</h3>
+    <p>AIS</p>
+  </div>
 
-    .glass-box label {
-        font-weight: 500;
-    }
+  <div class="team-card">
+    <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.png" class="team-avatar">
+    <h3>Amr Khaled</h3>
+    <p>AIS</p>
+  </div>
 
-    .btn-primary {
-        background: linear-gradient(to right, #ff4b4b, #ff6b6b);
-        border: none;
-        border-radius: 10px;
-        color: white;
-        font-weight: bold;
-        padding: 0.5rem 1rem;
-        transition: all 0.3s ease;
-    }
-
-    .btn-primary:hover {
-        background: linear-gradient(to right, #ff3c3c, #ff5c5c);
-        transform: translateY(-2px);
-    }
-
-    a {
-        color: #FF6B6B;
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-# Sidebar Navigation
-st.sidebar.title("📂 Menu")
-page = st.sidebar.radio("Navigate to", ["Home", "About", "Contact"])
-
-# Logo and Heading
-st.markdown("""
-<div style='text-align:center'>
-    <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_Ech.png" style='width:120px; border-radius:50%; margin-top:30px;'>
-    <h1>Echolens</h1>
-    <p style='color:#bbb'>Turning Videos into Stories with AI</p>
 </div>
+
+<style>
+.team-card {
+  background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #FF4B4B;
+  width: 100%;
+  max-width: 250px;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(255, 75, 75, 0.4);
+}
+
+.team-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 2px solid #FF4B4B;
+}
+
+.team-card h3 {
+  color: #FF4B4B;
+  margin: 10px 0 5px;
+}
+
+.team-card p {
+  color: #ccc;
+  font-size: 14px;
+  margin: 0;
+}
+</style>
 """, unsafe_allow_html=True)
 
-if page == "Home":
-    st.markdown("""
-    <div class="glass-box">
-        <h2>🎬 Upload your video</h2>
-        <p style='text-align:center;'>Supported formats: mp4, avi (max 200MB)</p>
-    """, unsafe_allow_html=True)
-
-    uploaded_video = st.file_uploader("Upload your video", type=["mp4", "avi"])
-
-    if uploaded_video:
-        st.video(uploaded_video)
-        st.success("Video uploaded successfully! Ready to process.")
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-elif page == "About":
-    st.markdown("""
-    <div class="glass-box">
-        <h2>👩‍💻 About Echolens</h2>
-        <p>
-            Echolens is a smart AI-powered tool designed to turn videos into readable, meaningful stories.
-            It analyzes motion, extracts keyframes, classifies content, and even generates summaries in multiple languages.
-        </p>
-        <p style='text-align:center;'>Built with ❤️ using Streamlit, YOLO, ViViT, and Gemini API.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-elif page == "Contact":
-    st.markdown("""
-    <div class="glass-box">
-        <h2>📫 Contact Us</h2>
-        <p style='text-align:center;'>We're happy to hear from you! Drop us a message below or reach out directly.</p>
-
-        <form action="mailto:echolens9@gmail.com" method="post" enctype="text/plain">
-            <label>Your Name</label><br>
-            <input type="text" name="name" style="width:100%; padding:10px;"><br><br>
-
-            <label>Your Email</label><br>
-            <input type="email" name="email" style="width:100%; padding:10px;"><br><br>
-
-            <label>Your Message</label><br>
-            <textarea name="message" rows="5" style="width:100%; padding:10px;"></textarea><br><br>
-
-            <input type="submit" value="Send Message" class="btn-primary">
-        </form>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Footer
-st.markdown("""
-<hr style="margin-top:50px; border-color:#444">
-<div style='text-align:center; color:#999'>
-    <small>© 2025 Echolens | <a href='mailto:echolens9@gmail.com'>echolens9@gmail.com</a></small>
-</div>
-""", unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
