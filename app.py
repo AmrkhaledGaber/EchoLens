@@ -1,4 +1,4 @@
-# Echolens - Stylish AI Video Story Generator
+# Echolens - Premium AI Video Story Generator
 
 import streamlit as st
 
@@ -9,19 +9,19 @@ st.set_page_config(page_title="Echolens | AI Video Generator", layout="wide")
 st.markdown("""
 <style>
 body, .stApp {
-    background: linear-gradient(135deg, #101010, #1a1a1a);
-    color: #f2f2f2;
-    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(145deg, #0d0d0d, #1e1e1e);
+    color: #eaeaea;
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
 }
 
 h1, h2, h3 {
-    color: #FF4B4B;
+    color: #ff4b4b;
     text-align: center;
     margin-bottom: 20px;
 }
 
-a { color: #FF4B4B; text-decoration: none; }
+a { color: #ff4b4b; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 .nav-title {
@@ -37,9 +37,9 @@ a:hover { text-decoration: underline; }
     margin-top: 40px;
 }
 .logo img {
-    width: 150px;
+    width: 160px;
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(255, 75, 75, 0.6);
+    box-shadow: 0 0 25px rgba(255, 75, 75, 0.6);
     transition: transform 0.3s ease;
 }
 .logo img:hover {
@@ -47,47 +47,48 @@ a:hover { text-decoration: underline; }
 }
 
 .section {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: auto;
     padding: 3rem 2rem;
 }
 
 .team-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     justify-content: center;
     gap: 2rem;
-    padding-top: 2rem;
+    margin-top: 3rem;
 }
+
 .team-card {
-    background: #1f1f1f;
-    border: 2px solid #FF4B4B;
-    border-radius: 12px;
-    width: 200px;
-    padding: 1rem;
+    background: linear-gradient(145deg, #1b1b1b, #292929);
+    border: 2px solid #ff4b4b;
+    border-radius: 15px;
+    padding: 1.5rem;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(255, 75, 75, 0.2);
+    box-shadow: 0 5px 25px rgba(255, 75, 75, 0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255,75,75,0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(255, 75, 75, 0.4);
 }
 .team-card img {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     object-fit: cover;
     border-radius: 50%;
-    margin-bottom: 0.8rem;
-    box-shadow: 0 0 12px rgba(255, 75, 75, 0.4);
+    margin-bottom: 1rem;
+    border: 3px solid #ff4b4b;
 }
 
 .footer {
     text-align: center;
     padding: 2rem;
-    color: #aaa;
+    color: #888;
     border-top: 1px solid #333;
-    margin-top: 3rem;
+    margin-top: 4rem;
+    font-size: 14px;
 }
 </style>
 """, unsafe_allow_html=True)
