@@ -382,14 +382,13 @@ if page == "Home":
 
     st.markdown("""
         <div style="width: 100%; max-width: 600px; margin: 0 auto; padding: 40px 10px; text-align: center;">
-            <!-- Logo centered -->
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_transparent.png" alt="Logo" width="100" style="border-radius: 50%; margin-bottom: 15px;">
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_transparent.png"
+                 alt="Logo"
+                 width="100"
+                 style="border-radius: 50%; margin-bottom: 15px;">
     
-            <!-- Text centered under logo -->
-            <div>
-                <h2 style="margin: 0; color: #FF4B4B;">Echolens</h2>
-                <p style="margin-top: 5px; font-size: 16px; color: #ccc;">Turning Videos into Stories with AI</p>
-            </div>
+            <h2 style="margin: 0; color: #FF4B4B;">Echolens</h2>
+            <p style="margin-top: 5px; font-size: 16px; color: #ccc;">Turning Videos into Stories with AI</p>
         </div>
     """, unsafe_allow_html=True)
 
