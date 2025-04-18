@@ -1,4 +1,4 @@
-# Echolens - Premium AI Video Story Generator
+# Echolens - AI Video Story Generator with Futuristic Design
 
 import streamlit as st
 
@@ -9,19 +9,18 @@ st.set_page_config(page_title="Echolens | AI Video Generator", layout="wide")
 st.markdown("""
 <style>
 body, .stApp {
-    background: linear-gradient(145deg, #0d0d0d, #1e1e1e);
-    color: #eaeaea;
+    background: radial-gradient(circle at top left, #0a0a0a, #1a1a1a);
+    color: #f4f4f4;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
 }
 
 h1, h2, h3 {
-    color: #ff4b4b;
+    color: #00F9FF;
     text-align: center;
     margin-bottom: 20px;
 }
 
-a { color: #ff4b4b; text-decoration: none; }
+a { color: #00F9FF; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 .nav-title {
@@ -39,7 +38,7 @@ a:hover { text-decoration: underline; }
 .logo img {
     width: 160px;
     border-radius: 50%;
-    box-shadow: 0 0 25px rgba(255, 75, 75, 0.6);
+    box-shadow: 0 0 25px rgba(0, 249, 255, 0.7);
     transition: transform 0.3s ease;
 }
 .logo img:hover {
@@ -53,25 +52,25 @@ a:hover { text-decoration: underline; }
 }
 
 .team-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
     margin-top: 3rem;
 }
 
 .team-card {
-    background: linear-gradient(145deg, #1b1b1b, #292929);
-    border: 2px solid #ff4b4b;
+    background: linear-gradient(135deg, #202020, #2e2e2e);
+    border: 2px solid #00F9FF;
     border-radius: 15px;
     padding: 1.5rem;
     text-align: center;
-    box-shadow: 0 5px 25px rgba(255, 75, 75, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 249, 255, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .team-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(255, 75, 75, 0.4);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 249, 255, 0.5);
 }
 .team-card img {
     width: 110px;
@@ -79,13 +78,13 @@ a:hover { text-decoration: underline; }
     object-fit: cover;
     border-radius: 50%;
     margin-bottom: 1rem;
-    border: 3px solid #ff4b4b;
+    border: 3px solid #00F9FF;
 }
 
 .footer {
     text-align: center;
     padding: 2rem;
-    color: #888;
+    color: #aaa;
     border-top: 1px solid #333;
     margin-top: 4rem;
     font-size: 14px;
@@ -119,7 +118,7 @@ elif page == "About Us":
         <div class='section'>
             <h1>About Echolens</h1>
             <p style='text-align:center; max-width:700px; margin:auto;'>
-                We are a passionate team of AI developers turning vision into insight through video analysis and storytelling.
+                We are a futuristic team building tools to analyze and narrate video content using artificial intelligence.
             </p>
             <h2>Our Team</h2>
             <div class='team-container'>
@@ -157,7 +156,7 @@ elif page == "Contact Us":
     st.markdown("""
     <div class='section'>
         <h1>Contact Us</h1>
-        <p style='text-align:center;'>We’d love to hear from you. Contact us anytime:</p>
+        <p style='text-align:center;'>We're happy to connect! Reach out below:</p>
         <div style='text-align:center; line-height:2em;'>
             📧 <strong>Email:</strong> <a href='mailto:echolens9@gmail.com'>echolens9@gmail.com</a><br>
             🌐 <strong>GitHub:</strong> <a href='https://github.com/AmrkhaledGaber/EchoLens'>Echolens Project</a><br>
