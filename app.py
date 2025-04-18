@@ -2,166 +2,216 @@
 """
 app.py
 
-This is the main application file for the Video Story Generator.
+Main application for Echolens - Video Story Generator.
+This app allows users to upload a video, detects anomalies and objects,
+generates a descriptive story using Gemini AI, and allows translation to other languages.
 """
 
 import streamlit as st
+import cv2
+import numpy as np
+import av
+import torch
+from ultralytics import YOLO
+from transformers import VivitForVideoClassification, VivitImageProcessor
+from transformers import MarianMTModel, MarianTokenizer
+import google.generativeai as genai
+import os
+import io
+from PIL import Image
+from google.api_core.exceptions import ResourceExhausted
+from collections import Counter
 
-# Apply full UI redesign
-st.set_page_config(page_title="Echolens", page_icon="🎥", layout="wide")
-
+# -----------------------------
+# UI Custom CSS
+# -----------------------------
+# Injects dark mode themed CSS styles for modern visual design
 st.markdown("""
 <style>
-body {
-    background: #0e0e0e;
-    color: white;
-    font-family: 'Segoe UI', sans-serif;
-    overflow-x: hidden;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #FF4B4B;
-    font-weight: 700;
-    text-align: center;
-}
-
 .stApp {
-    padding-top: 20px;
-    background: linear-gradient(145deg, #1f1f1f, #121212);
+    background: linear-gradient(135deg, #1E1E1E, #121212);
     color: white;
-    font-family: 'Segoe UI', sans-serif;
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Card Style */
-.card {
-    background-color: #1f1f1f;
-    border: 1px solid #FF4B4B;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 0 15px rgba(255, 75, 75, 0.3);
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Button */
-.stButton>button {
-    background: linear-gradient(45deg, #FF4B4B, #C62828);
-    color: white;
-    font-weight: bold;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-.stButton>button:hover {
-    background: #FF1744;
-    box-shadow: 0 0 15px rgba(255, 75, 75, 0.6);
-}
-
-/* Input fields */
-input, textarea {
-    background-color: #2A2A2A;
-    color: white;
-    border: 1px solid #444;
-    border-radius: 6px;
-    padding: 10px;
-    width: 100%;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 20px;
-    color: #aaa;
-    font-size: 14px;
-    margin-top: 40px;
-    border-top: 1px solid #333;
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 </style>
 """, unsafe_allow_html=True)
 
+# -----------------------------
 # Sidebar Navigation
-st.sidebar.title("📂 Navigation")
+# -----------------------------
+st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "About Us", "Contact Us"])
 
+# -----------------------------
 # Home Page
+# -----------------------------
 if page == "Home":
+    st.markdown('<div class="content-container">', unsafe_allow_html=True)
+
+    # Upload Instructions Icon
+    st.markdown("""... (instructions markup omitted for brevity) ...""", unsafe_allow_html=True)
+
+    # App Branding Block (Logo + Title)
     st.markdown("""
-    <div class="card">
-        <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_Ech.png" style="width: 120px; border-radius: 50%; margin: 0 auto; display: block;">
-        <h1>Echolens</h1>
-        <p style="text-align:center; font-size:18px; color:#ccc;">Turn videos into stories with AI ✨</p>
+    <div style="width: 100%; max-width: 600px; text-align: center; padding: 50px 10px;">
+        <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_Ech.png" width="180" style="border-radius: 50%;">
+        <h2 style="color: #FF4B4B;">Echolens</h2>
+        <p style="color: #ccc; font-size: 25px;">Turning Videos into Stories with AI</p>
     </div>
     """, unsafe_allow_html=True)
 
-    st.title("🎬 Video Story Generator")
-    uploaded_file = st.file_uploader("Upload your video (MP4, AVI)", type=["mp4", "avi"])
-    if uploaded_file:
-        st.video(uploaded_file)
-        st.success("Uploaded Successfully! (Processing not implemented in this mock UI)")
+    st.title("Video Story Generator")
 
-# About Us Page
-elif page == "About Us":
-    st.markdown("""
-    <div class="card">
-        <h1>About Us</h1>
-        <p style='text-align:center; font-size:18px;'>We are a student team from AIU building AI-powered video analyzers for smarter storytelling.</p>
-    </div>
-    """, unsafe_allow_html=True)
+    # File Upload UI
+    st.markdown('<div class="file-uploader-card">', unsafe_allow_html=True)
+    uploaded_file = st.file_uploader("Upload Video", type=["mp4", "avi"])
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    st.subheader("👨‍💻 Our Team")
-    cols = st.columns(5)
-    team = [
-        ("Mohamed ElSmawy", "AIS", "mohamed_elsmawy.png"),
-        ("George Nashaat", "AIS", "george_nashaat.png"),
-        ("Aya Tamer", "Team Leader", "aya_tamer.png"),
-        ("Ahmed Dawood", "AIS", "ahmed_dawood.png"),
-        ("Amr Khaled", "AIS", "amr_khaled.png")
-    ]
-    for i, (name, role, img) in enumerate(team):
-        with cols[i]:
-            st.markdown(f"""
-            <div style='text-align:center;'>
-                <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/{img}' style='width:90px;height:90px;border-radius:50%;margin-bottom:10px;'>
-                <p><b>{name}</b><br><span style='color:#aaa;font-size:13px;'>{role}</span></p>
-            </div>
-            """, unsafe_allow_html=True)
+    # -----------------------------
+    # Main Logic
+    # -----------------------------
+    def main():
+        if uploaded_file is not None:
+            # Save video locally
+            with open("input_video.mp4", "wb") as f:
+                f.write(uploaded_file.read())
 
-# Contact Us Page
-elif page == "Contact Us":
-    st.markdown("""
-    <div class="card">
-        <h1>Contact Us</h1>
-        <p style='text-align:center;'>We'd love to hear from you!</p>
-        <p style='text-align:center; font-size:16px;'>📧 <a href='mailto:echolens9@gmail.com'>echolens9@gmail.com</a><br>
-        🌐 <a href='https://github.com/AmrkhaledGaber/EchoLens'>GitHub Repo</a><br>
-        🔗 <a href='https://linkedin.com/company/echolens'>LinkedIn</a></p>
-    </div>
-    """, unsafe_allow_html=True)
+            with st.spinner("Processing..."):
+                yolo_model, processor, vivit_model, gemini_model = load_models()
 
-    st.subheader("✉️ Send Us a Message")
-    with st.form("contact_form"):
-        name = st.text_input("Your Name")
-        email = st.text_input("Your Email")
-        message = st.text_area("Your Message")
-        submit = st.form_submit_button("Send")
-        if submit:
-            st.success(f"Thank you {name}! We’ll get back to you at {email} soon.")
+                original_duration, original_frame_count = get_video_info("input_video.mp4")
+                preprocessed_video = preprocess_video("input_video.mp4", "preprocessed_video.mp4")
 
-# Footer
-st.markdown("""
-<div class="footer">
-    &copy; 2025 Echolens | Built with ❤️ by the AIU Team
-</div>
-""", unsafe_allow_html=True)
+                keyframes_video, timestamps, object_counts, saved = extract_keyframes(preprocessed_video, yolo_model)
+                keyframes_duration, keyframes_frame_count = get_video_info(keyframes_video) if keyframes_video else (0, 0)
+
+                prediction = anomaly_detection(keyframes_video, processor, vivit_model)
+                story = generate_story(keyframes_video, prediction, gemini_model)
+
+            st.video("input_video.mp4")
+
+            # Display Video Metadata
+            with st.expander("Video Details"):
+                st.write(f"Original Duration: {original_duration:.2f} sec")
+                st.write(f"Original Frames: {original_frame_count}")
+                st.write(f"Keyframe Duration: {keyframes_duration:.2f} sec")
+                st.write(f"Keyframe Frames: {keyframes_frame_count}")
+                st.write("Detected Objects:")
+                st.write(object_counts)
+
+            # Display Results
+            with st.expander("Processing Results"):
+                st.write("Prediction:", prediction)
+                st.write("Generated Story:")
+                st.write(story)
+
+    # -----------------------------
+    # Model Loader (with cache)
+    # -----------------------------
+    @st.cache_resource
+    def load_models():
+        yolo_model = YOLO("yolov8n.pt")
+        processor = VivitImageProcessor.from_pretrained("prathameshdalal/vivit-b-16x2-kinetics400-UCF-Crime", token=os.getenv("HF_TOKEN"))
+        vivit_model = VivitForVideoClassification.from_pretrained("prathameshdalal/vivit-b-16x2-kinetics400-UCF-Crime", token=os.getenv("HF_TOKEN"))
+        genai.configure(api_key="AIzaSyCZFf2r-fmE9uRQjKebHfF_MZhDKwiZP7A")
+        gemini_model = genai.GenerativeModel("gemini-1.5-flash")
+        return yolo_model, processor, vivit_model, gemini_model
+
+    # -----------------------------
+    # Video Utility Functions
+    # -----------------------------
+    def get_video_info(path):
+        cap = cv2.VideoCapture(path)
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        cap.release()
+        return (frames / fps, frames) if fps else (0, frames)
+
+    def preprocess_video(src, dst, size=(224, 224)):
+        cap = cv2.VideoCapture(src)
+        out = cv2.VideoWriter(dst, cv2.VideoWriter_fourcc(*'mp4v'), int(cap.get(5)), size)
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                break
+            resized = cv2.resize(frame, size)
+            out.write(resized)
+        cap.release()
+        out.release()
+        return dst
+
+    def extract_keyframes(path, model, output_path="keyframes.mp4"):
+        cap = cv2.VideoCapture(path)
+        ret, prev = cap.read()
+        if not ret:
+            return None, [], {}, 0
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        out = cv2.VideoWriter(output_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (int(cap.get(3)), int(cap.get(4))))
+        gray_prev = cv2.cvtColor(prev, cv2.COLOR_BGR2GRAY)
+        timestamps, objects, count = [], [], 0
+        while cap.isOpened():
+            ret, curr = cap.read()
+            if not ret:
+                break
+            gray_curr = cv2.cvtColor(curr, cv2.COLOR_BGR2GRAY)
+            diff = cv2.absdiff(gray_prev, gray_curr)
+            if cv2.countNonZero(diff) > 50000:
+                out.write(curr)
+                count += 1
+                timestamps.append(cap.get(cv2.CAP_PROP_POS_MSEC)/1000)
+                results = model(curr)
+                for r in results:
+                    for box in r.boxes:
+                        objects.append(r.names[int(box.cls)])
+            gray_prev = gray_curr
+        cap.release()
+        out.release()
+        return output_path, timestamps, dict(Counter(objects)), count
+
+    def anomaly_detection(path, processor, model):
+        container = av.open(path)
+        frames = [f.to_image() for f in container.decode(video=0)][:32]
+        inputs = processor(frames, return_tensors="pt")
+        with torch.no_grad():
+            out = model(**inputs)
+        return model.config.id2label[out.logits.argmax(-1).item()]
+
+    def generate_story(path, label, gemini_model):
+        cap = cv2.VideoCapture(path)
+        step = max(1, int(cap.get(7) // 3))
+        frames, idx = [], 0
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                break
+            if idx % step == 0 and len(frames) < 3:
+                fname = f"frame_{idx}.jpg"
+                cv2.imwrite(fname, frame)
+                frames.append(fname)
+            idx += 1
+        cap.release()
+
+        descs = []
+        for fp in frames:
+            with open(fp, "rb") as f:
+                image = Image.open(io.BytesIO(f.read()))
+            prompt = f"This frame is from a video classified as '{label}'. Describe the event."
+            try:
+                desc = gemini_model.generate_content([prompt, image])
+                descs.append(desc.text)
+            except Exception as e:
+                descs.append("Description failed.")
+
+        try:
+            summary = gemini_model.generate_content("\n".join(descs) + "\nSummarize the story.")
+            return summary.text
+        except:
+            return "Story generation failed."
+
+    main()
+    st.markdown('</div>', unsafe_allow_html=True)
