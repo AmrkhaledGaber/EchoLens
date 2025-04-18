@@ -67,6 +67,11 @@ a:hover { text-decoration: underline; }
     padding: 1rem;
     text-align: center;
     box-shadow: 0 5px 15px rgba(255, 75, 75, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255,75,75,0.3);
 }
 .team-card img {
     width: 100px;
@@ -110,108 +115,38 @@ if page == "Home":
 # === About Us Page ===
 elif page == "About Us":
     st.markdown("""
-        <style>
-        .about-container {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        .about-title {
-            color: #FF4B4B;
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        .about-description {
-            color: #ccc;
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-        .team-title {
-            color: #FF4B4B;
-            font-size: 28px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-        .team-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .team-card {
-            background: linear-gradient(145deg, #1E1E1E, #121212);
-            border: 1px solid #FF4B4B;
-            border-radius: 16px;
-            padding: 20px;
-            width: 180px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(255,75,75,0.3);
-        }
-        .team-card img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            border: 2px solid #FF4B4B;
-        }
-        .team-card h4 {
-            color: #FF4B4B;
-            margin: 10px 0 5px;
-        }
-        .team-card p {
-            color: #aaa;
-            font-size: 14px;
-            margin: 0;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-        <div class='about-container'>
-            <h1 class='about-title'>About Echolens</h1>
-            <p class='about-description'>
+        <div class='section'>
+            <h1>About Echolens</h1>
+            <p style='text-align:center; max-width:700px; margin:auto;'>
                 We are a passionate team of AI developers turning vision into insight through video analysis and storytelling.
             </p>
-
-            <h2 class='team-title'>Our Team</h2>
-            <div class='team-row'>
-
+            <h2>Our Team</h2>
+            <div class='team-container'>
                 <div class='team-card'>
                     <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.png' />
                     <h4>Aya Tamer</h4>
                     <p>AIS</p>
                 </div>
-
                 <div class='team-card'>
                     <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.png' />
                     <h4>Mohamed ElSmawy</h4>
                     <p>AIS</p>
                 </div>
-
                 <div class='team-card'>
                     <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.png' />
                     <h4>George Nashaat</h4>
                     <p>AIS</p>
                 </div>
-
                 <div class='team-card'>
                     <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.png' />
                     <h4>Ahmed Dawood</h4>
                     <p>AIS</p>
                 </div>
-
                 <div class='team-card'>
                     <img src='https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.png' />
                     <h4>Amr Khaled</h4>
                     <p>AIS</p>
                 </div>
-
             </div>
         </div>
     """, unsafe_allow_html=True)
