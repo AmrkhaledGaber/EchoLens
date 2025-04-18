@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Echolens: AI-Powered Video Story Generator
-Redesigned Streamlit App UI (Full Version)
-"""
-
 import streamlit as st
 import os
 
