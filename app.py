@@ -380,7 +380,7 @@ if page == "Home":
     """, unsafe_allow_html=True)
 
  # Logo + Title side-by-side in one row using flexbox
-st.markdown("""
+    st.markdown("""
     <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1000px; margin: 0 auto 30px auto;">
         <div style="flex: 0 0 auto;">
             <img src="logo_transparent.png" alt="Logo" width="140" style="border-radius: 50%;">
