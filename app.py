@@ -394,7 +394,7 @@ if page == "Home":
 
 
     # Set the title of the app
-st.title("Video Story Generator")
+    st.title("Video Story Generator")
 
     # File uploader for video input wrapped in a card
     st.markdown('<div class="file-uploader-card">', unsafe_allow_html=True)
