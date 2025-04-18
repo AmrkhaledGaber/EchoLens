@@ -758,19 +758,19 @@ elif page == "About Us":
         """, unsafe_allow_html=True)
     
     with col1:
-        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.jpg", "Mohamed ElSmawy", "AIS")
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.png", "Mohamed ElSmawy", "AIS")
     
     with col2:
-        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.jpg", "George Nashaat", "AIS")
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.png", "George Nashaat", "AIS")
     
     with col3:
-        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.jpg", "Aya Tamer (Leader)", "AIS")
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.png", "Aya Tamer (Leader)", "AIS")
     
     with col4:
-        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.jpg", "Ahmed Dawood", "AIS")
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.png", "Ahmed Dawood", "AIS")
     
     with col5:
-        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.jpg", "Amr Khaled", "AIS")
+        render_team_card("https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.png", "Amr Khaled", "AIS")
     
 
 
