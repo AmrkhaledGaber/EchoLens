@@ -1,69 +1,89 @@
-# app.py (Echolens - Redesigned UI)
+# app.py (Echolens - Sleek Neon Theme)
 import streamlit as st
 
-# Inject custom CSS for stylish UI
+# Apply custom CSS for an ultra-modern neon theme
 st.markdown("""
     <style>
     body {
-        background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-        font-family: 'Poppins', sans-serif;
-        color: #ffffff;
+        background: #0a0a0a;
+        font-family: 'Segoe UI', sans-serif;
+        color: #fff;
     }
-    .main-header {
+    .stApp {
+        padding: 0;
+        margin: 0;
+        background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+        color: #eee;
+    }
+    .header {
         text-align: center;
-        padding: 50px 0;
+        padding: 60px 0 30px;
     }
-    .main-header h1 {
+    .header img {
+        width: 130px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        box-shadow: 0 0 30px #00eaff;
+    }
+    .header h1 {
         font-size: 48px;
-        background: linear-gradient(to right, #ff416c, #ff4b2b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #00eaff;
+        text-shadow: 0 0 10px #00eaff;
     }
-    .main-header p {
-        font-size: 20px;
+    .header p {
+        font-size: 18px;
         color: #ccc;
-        margin-top: 10px;
     }
-    .nav-sidebar .css-1d391kg { background-color: #1c1c1c !important; }
     .section {
-        padding: 30px 20px;
-        margin: 20px 0;
-        background-color: #2a2a2a;
+        background: #1a1a1a;
+        border: 1px solid #00eaff44;
         border-radius: 12px;
-        box-shadow: 0 0 15px rgba(255, 75, 75, 0.2);
+        padding: 30px;
+        margin: 30px auto;
+        max-width: 900px;
+        box-shadow: 0 0 15px #00eaff33;
     }
     .section h2 {
-        color: #ff4b4b;
+        color: #00eaff;
+        margin-bottom: 20px;
     }
     .footer {
-        margin-top: 60px;
+        margin-top: 50px;
         padding: 20px;
         text-align: center;
-        border-top: 1px solid #333;
+        font-size: 14px;
         color: #777;
+        border-top: 1px solid #333;
     }
-    .team-grid {
+    .team-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 20px;
-        margin-top: 30px;
     }
     .team-card {
-        background-color: #1c1c1c;
-        padding: 20px;
-        border-radius: 12px;
         text-align: center;
-        border: 1px solid #ff4b4b44;
+        background: #121212;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #00eaff33;
+        box-shadow: 0 0 10px #00eaff22;
     }
     .team-card img {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
         border-radius: 50%;
         object-fit: cover;
         margin-bottom: 10px;
+        border: 2px solid #00eaff;
     }
-    .team-card h4 { color: #ff4b4b; margin: 5px 0; }
-    .team-card p { color: #aaa; font-size: 14px; }
+    .team-card h4 {
+        color: #00eaff;
+        margin: 5px 0;
+    }
+    .team-card p {
+        color: #aaa;
+        font-size: 13px;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -71,16 +91,15 @@ st.markdown("""
 st.sidebar.title("Echolens")
 page = st.sidebar.radio("Navigate", ["Home", "About Us", "Contact Us"])
 
-# Header Section
+# Header
 st.markdown("""
-<div class="main-header">
-    <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_Ech.png" width="120" style="border-radius: 50%;">
+<div class="header">
+    <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_Ech.png">
     <h1>Echolens</h1>
     <p>Turning Videos into Stories with AI</p>
 </div>
 """, unsafe_allow_html=True)
 
-# Home Page
 if page == "Home":
     st.markdown('<div class="section">', unsafe_allow_html=True)
     st.header("Video Story Generator")
@@ -90,12 +109,11 @@ if page == "Home":
         st.success("Video uploaded successfully! (processing code not included in this demo)")
     st.markdown('</div>', unsafe_allow_html=True)
 
-# About Us Page
 elif page == "About Us":
     st.markdown('<div class="section">', unsafe_allow_html=True)
-    st.header("Meet Our Team")
+    st.header("Our Team")
     st.markdown("""
-    <div class="team-grid">
+    <div class="team-container">
         <div class="team-card">
             <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.png">
             <h4>Mohamed ElSmawy</h4>
@@ -125,14 +143,13 @@ elif page == "About Us":
     """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Contact Us Page
 elif page == "Contact Us":
     st.markdown('<div class="section">', unsafe_allow_html=True)
     st.header("Contact Us")
     st.markdown("""
-    <p>Email: <a href="mailto:echolens9@gmail.com" style="color:#FF4B4B">echolens9@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/AmrkhaledGaber/EchoLens" style="color:#FF4B4B">Echolens Project</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/company/echolens" style="color:#FF4B4B">Echolens Team</a></p>
+    <p>Email: <a href="mailto:echolens9@gmail.com" style="color:#00eaff">echolens9@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/AmrkhaledGaber/EchoLens" style="color:#00eaff">Echolens Project</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/company/echolens" style="color:#00eaff">Echolens Team</a></p>
     """, unsafe_allow_html=True)
 
     with st.form("contact_form"):
@@ -141,13 +158,12 @@ elif page == "Contact Us":
         message = st.text_area("Your Message")
         submitted = st.form_submit_button("Send Message")
         if submitted:
-            st.success(f"Thanks {name}, we will contact you at {email}!")
-
+            st.success(f"Thanks {name}, we'll reach out at {email}.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 # Footer
 st.markdown("""
 <div class="footer">
-    © 2025 Echolens. Built with ❤️ by the Team.
+    &copy; 2025 Echolens. Designed with 🚀 and 💙.
 </div>
 """, unsafe_allow_html=True)
