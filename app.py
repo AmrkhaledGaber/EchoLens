@@ -386,11 +386,11 @@ if page == "Home":
              alt="Logo"
              width="100"
              style="border-radius: 50%; margin-bottom: 15px;">
-        
         <h2 style="margin: 0; color: #FF4B4B;">Echolens</h2>
         <p style="margin-top: 5px; font-size: 16px; color: #ccc;">Turning Videos into Stories with AI</p>
     </div>
-    """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)    
+
 
 
 
