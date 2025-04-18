@@ -1,169 +1,94 @@
-# app.py (Echolens - Sleek Neon Theme)
 import streamlit as st
 
-# Apply custom CSS for an ultra-modern neon theme
+# --- Custom CSS (Glassmorphism + Dark Neon Theme) ---
 st.markdown("""
-    <style>
-    body {
-        background: #0a0a0a;
-        font-family: 'Segoe UI', sans-serif;
-        color: #fff;
-    }
-    .stApp {
-        padding: 0;
-        margin: 0;
-        background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-        color: #eee;
-    }
-    .header {
-        text-align: center;
-        padding: 60px 0 30px;
-    }
-    .header img {
-        width: 130px;
-        border-radius: 50%;
-        margin-bottom: 20px;
-        box-shadow: 0 0 30px #00eaff;
-    }
-    .header h1 {
-        font-size: 48px;
-        color: #00eaff;
-        text-shadow: 0 0 10px #00eaff;
-    }
-    .header p {
-        font-size: 18px;
-        color: #ccc;
-    }
-    .section {
-        background: #1a1a1a;
-        border: 1px solid #00eaff44;
-        border-radius: 12px;
-        padding: 30px;
-        margin: 30px auto;
-        max-width: 900px;
-        box-shadow: 0 0 15px #00eaff33;
-    }
-    .section h2 {
-        color: #00eaff;
-        margin-bottom: 20px;
-    }
-    .footer {
-        margin-top: 50px;
-        padding: 20px;
-        text-align: center;
-        font-size: 14px;
-        color: #777;
-        border-top: 1px solid #333;
-    }
-    .team-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 20px;
-    }
-    .team-card {
-        text-align: center;
-        background: #121212;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #00eaff33;
-        box-shadow: 0 0 10px #00eaff22;
-    }
-    .team-card img {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 10px;
-        border: 2px solid #00eaff;
-    }
-    .team-card h4 {
-        color: #00eaff;
-        margin: 5px 0;
-    }
-    .team-card p {
-        color: #aaa;
-        font-size: 13px;
-    }
-    </style>
+<style>
+body, .stApp {
+    background: linear-gradient(145deg, #0f0f0f, #1c1c1c);
+    font-family: 'Segoe UI', sans-serif;
+    color: #FFFFFF;
+}
+
+h1, h2, h3, h4 {
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 700px;
+}
+
+.stButton > button {
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.stButton > button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ff4b2b;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: #999;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+a {
+    color: #ff4b2b;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+</style>
 """, unsafe_allow_html=True)
 
-# Sidebar
-st.sidebar.title("Echolens")
-page = st.sidebar.radio("Navigate", ["Home", "About Us", "Contact Us"])
+# --- Page Title ---
+st.markdown('<h1>Echolens</h1>', unsafe_allow_html=True)
+st.markdown('<p style="text-align:center; color:#bbb;">AI-powered video insights made simple.</p>', unsafe_allow_html=True)
 
-# Header
-st.markdown("""
-<div class="header">
-    <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/logo_Ech.png">
-    <h1>Echolens</h1>
-    <p>Turning Videos into Stories with AI</p>
-</div>
-""", unsafe_allow_html=True)
+# --- Upload Card ---
+st.markdown('<div class="glass-card">', unsafe_allow_html=True)
 
-if page == "Home":
-    st.markdown('<div class="section">', unsafe_allow_html=True)
-    st.header("Video Story Generator")
-    uploaded_file = st.file_uploader("Upload your MP4/AVI file", type=["mp4", "avi"])
-    if uploaded_file:
-        st.video(uploaded_file)
-        st.success("Video uploaded successfully! (processing code not included in this demo)")
-    st.markdown('</div>', unsafe_allow_html=True)
+st.subheader("Upload Your Video")
+uploaded_file = st.file_uploader("Upload Video", type=["mp4", "avi"])
 
-elif page == "About Us":
-    st.markdown('<div class="section">', unsafe_allow_html=True)
-    st.header("Our Team")
-    st.markdown("""
-    <div class="team-container">
-        <div class="team-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.png">
-            <h4>Mohamed ElSmawy</h4>
-            <p>AI Developer</p>
-        </div>
-        <div class="team-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.png">
-            <h4>George Nashaat</h4>
-            <p>Vision Engineer</p>
-        </div>
-        <div class="team-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.png">
-            <h4>Aya Tamer</h4>
-            <p>Project Leader</p>
-        </div>
-        <div class="team-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.png">
-            <h4>Ahmed Dawood</h4>
-            <p>Backend Developer</p>
-        </div>
-        <div class="team-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.png">
-            <h4>Amr Khaled</h4>
-            <p>Frontend Developer</p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+if uploaded_file:
+    st.success("Video uploaded successfully!")
+    st.video(uploaded_file)
 
-elif page == "Contact Us":
-    st.markdown('<div class="section">', unsafe_allow_html=True)
-    st.header("Contact Us")
-    st.markdown("""
-    <p>Email: <a href="mailto:echolens9@gmail.com" style="color:#00eaff">echolens9@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/AmrkhaledGaber/EchoLens" style="color:#00eaff">Echolens Project</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/company/echolens" style="color:#00eaff">Echolens Team</a></p>
-    """, unsafe_allow_html=True)
+    st.subheader("Select Language for Story")
+    lang = st.selectbox("Choose language", ["English", "Arabic", "French", "German"])
 
-    with st.form("contact_form"):
-        name = st.text_input("Your Name")
-        email = st.text_input("Your Email")
-        message = st.text_area("Your Message")
-        submitted = st.form_submit_button("Send Message")
-        if submitted:
-            st.success(f"Thanks {name}, we'll reach out at {email}.")
-    st.markdown('</div>', unsafe_allow_html=True)
+    if st.button("Process Video"):
+        st.info(f"Processing video in {lang}...")
+        st.success("✅ Story generated successfully!")
+        st.write("This is a mock story generated from your video. (Integrate your logic here.)")
 
-# Footer
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- Footer ---
 st.markdown("""
 <div class="footer">
-    &copy; 2025 Echolens. Designed with 🚀 and 💙.
+    &copy; 2025 Echolens — Crafted with ❤️ by Team AIS |
+    <a href="https://github.com/AmrkhaledGaber/EchoLens" target="_blank">GitHub</a>
 </div>
 """, unsafe_allow_html=True)
