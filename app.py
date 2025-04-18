@@ -776,25 +776,39 @@ elif page == "About Us":
 
 # Contact Us Page
 elif page == "Contact Us":
-    # Wrap the rest of the content in a centered container
     st.markdown('<div class="content-container">', unsafe_allow_html=True)
 
+    # Section title
     st.markdown("""
-    <h1 style="text-align: center;">Contact Us</h1>
-    Have questions or feedback? We'd love to hear from you! Reach out to us through the following channels.
+        <h1 style="margin-top: 50px;">Contact Us</h1>
+        <p style='text-align: center; font-size: 18px; color: #ccc; margin-bottom: 40px;'>
+            Have questions or feedback? We'd love to hear from you. Reach out to us through the following channels.
+        </p>
     """, unsafe_allow_html=True)
 
-    st.subheader("Get in Touch")
-    st.write("📧 **Email**: echolens9@gmail.com")
-    st.write("🌐 **GitHub**: [Echolens Project](https://github.com/AmrkhaledGaber/EchoLens)")
-    st.write("🔗 **LinkedIn**: [Echolens Team](https://linkedin.com/company/echolens)")
+    # Contact details
+    st.markdown("""
+    <div style='text-align: center; font-size: 18px; margin-bottom: 40px;'>
+        <p>📧 <strong>Email:</strong> <a href="mailto:echolens9@gmail.com" style="color:#FF4B4B;">echolens9@gmail.com</a></p>
+        <p>🌐 <strong>GitHub:</strong> <a href="https://github.com/AmrkhaledGaber/EchoLens" style="color:#FF4B4B;">Echolens Project</a></p>
+        <p>🔗 <strong>LinkedIn:</strong> <a href="https://linkedin.com/company/echolens" style="color:#FF4B4B;">Echolens Team</a></p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.subheader("Send Us a Message")
+    # Contact form
+    st.markdown("<h2 style='text-align: center; margin-top: 40px;'>Send Us a Message</h2>", unsafe_allow_html=True)
+
     with st.form(key="contact_form"):
+        st.markdown("<div style='max-width:600px; margin:auto;'>", unsafe_allow_html=True)
+
         name = st.text_input("Your Name")
         email = st.text_input("Your Email")
         message = st.text_area("Your Message")
+
         submit_button = st.form_submit_button(label="Send Message")
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
         if submit_button:
             st.success(f"Thank you, {name}! We've received your message and will get back to you at {email} soon.")
 
