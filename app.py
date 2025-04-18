@@ -383,7 +383,7 @@ if page == "Home":
     st.markdown("""
     <div style="width: 100%; max-width: 600px; margin: 0 auto; padding: 40px 10px; text-align: center;">
         <!-- Logo centered -->
-        <img src="logo.png" alt="Logo" width="100" style="border-radius: 50%; margin-bottom: 15px;">
+        <img src="logo_transparent.png" alt="Logo" width="100" style="border-radius: 50%; margin-bottom: 15px;">
     
         <!-- Text centered under logo -->
         <div>
