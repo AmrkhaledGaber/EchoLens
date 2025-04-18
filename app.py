@@ -751,7 +751,7 @@ elif page == "About Us":
     with col1:
         st.markdown("""
         <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.jpg" alt="Mohamed ElSmawy">
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/mohamed_elsmawy.png" alt="Mohamed ElSmawy">
             <h4>Mohamed ElSmawy</h4>
             <p><b>AIS</b></p>
         </div>
@@ -760,7 +760,7 @@ elif page == "About Us":
     with col2:
         st.markdown("""
         <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.jpg" alt="George Nashaat">
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/george_nashaat.png" alt="George Nashaat">
             <h4>George Nashaat</h4>
             <p><b>AIS</b></p>
         </div>
@@ -769,16 +769,16 @@ elif page == "About Us":
     with col3:
         st.markdown("""
         <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.jpg" alt="Aya Tamer">
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/aya_tamer.png" alt="Aya Tamer">
             <h4>Aya Tamer</h4>
-            <p><b>(Team Leader)</b><br><b>AIS</b></p>
+            <p><b>AIS</b></p>
         </div>
         """, unsafe_allow_html=True)
     
     with col4:
         st.markdown("""
         <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.jpg" alt="Ahmed Dawood">
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/ahmed_dawood.png" alt="Ahmed Dawood">
             <h4>Ahmed Dawood</h4>
             <p><b>AIS</b></p>
         </div>
@@ -787,7 +787,7 @@ elif page == "About Us":
     with col5:
         st.markdown("""
         <div class="developer-card">
-            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.jpg" alt="Amr Khaled">
+            <img src="https://raw.githubusercontent.com/AmrkhaledGaber/EchoLens/main/team/amr_khaled.png" alt="Amr Khaled">
             <h4>Amr Khaled</h4>
             <p><b>AIS</b></p>
         </div>
